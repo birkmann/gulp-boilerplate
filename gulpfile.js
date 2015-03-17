@@ -1,6 +1,7 @@
 var gulp = require('gulp'); 
 
 var changed = require('gulp-changed'),
+	sass = require('gulp-sass'),
 	jshint = require ('gulp-jshint'),
 	concat = require ('gulp-concat'),
 	uglify = require ('gulp-uglify'),
@@ -8,7 +9,7 @@ var changed = require('gulp-changed'),
 	imagemin = require ('gulp-imagemin'),
 	clean = require('gulp-clean'),
 	minifyhtml = require ('gulp-minify-html'),
-	autoprefixer = require ('gulp-autoprefixer '),
+	autoprefixer = require ('gulp-autoprefixer'),
 	minifyCSS = require ('gulp-minify-css');
 
 gulp.task('images', function() {
@@ -20,3 +21,11 @@ gulp.task('images', function() {
 		.pipe(imagemin())
 		.pipe(gulp.dest(imgDst));
 });
+
+gulp.task('sass', function () {
+    gulp.src('./src/scss/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./build/css'));
+});
+
+gulp.task('default', ["images", "sass"]);
