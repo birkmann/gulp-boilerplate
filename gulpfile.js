@@ -28,6 +28,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('files-deploy', function() {
+	
     gulp.src('src/*')
         .pipe(gulp.dest('build'));
 
