@@ -1,0 +1,10 @@
+body {
+	font: 100 18px/1.6em sans-serif;
+	@include background-gradient(#fff, #aaa);
+	min-height: 100vh;
+}
+
+.wrapper {
+	max-width: 1140px;
+	margin: 0 auto;
+}
