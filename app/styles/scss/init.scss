@@ -1,8 +1,17 @@
 //misc settings
 @import 'config/_settings';
 @import 'config/_mixins';
+@import 'config/_breakpoints';
 
 //frameworks
+@import 'susy/_susy';
+$susy: (
+	columns: 12,
+	container: 1140px,
+	gutters: 0.25,
+	global-box-sizing: border-box,
+	debug: (image: show-columns)
+);
 
 //global things
 @import 'general/_reset';

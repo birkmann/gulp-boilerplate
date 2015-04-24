@@ -1,10 +1,28 @@
 body {
-	font: 100 18px/1.6em sans-serif;
-	@include background-gradient(#fff, #aaa);
-	min-height: 100vh;
+	font: normal 18px/1.6em sans-serif;
 }
 
 .wrapper {
-	max-width: 1140px;
+	max-width: 800px;
 	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.row {
+	@include clearfix;
+	.col-6 {
+		@include breakpoint(laptop) {
+			@include span(6);
+		}
+		&:last-child {
+			@include breakpoint(laptop) {
+				@include span(6 last);
+			}
+		}
+		&.last-child {
+			@include breakpoint(laptop) {
+				@include span(6 last);
+			}
+		}
+	}
 }
