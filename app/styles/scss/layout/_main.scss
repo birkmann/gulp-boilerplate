@@ -4,11 +4,39 @@
 }
 
 body {
-	font: normal 18px/1.6em sans-serif;
+	font: normal 17px/1.6em sans-serif;
 	-webkit-text-size-adjust: 100%;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	overflow-y: scroll;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 5px 0 15px;
+}
+
+h2 {
+	font-size: 1.75em;
+	margin: 5px 0 15px;
+}
+
+h3 {
+	font-size: 1.5em;
+	margin: 5px 0 15px;
+}
+
+.img-r {
+	width: 100%;
+	height: auto;
+}
+
+img.circle {
+	border-radius: 100%;
+}
+
+.center {
+	text-align: center;
 }
 
 .wrapper {
@@ -55,18 +83,39 @@ body {
 
 		}
 	}
+	.container {
+		max-width: 1600px;
+		padding: 0 15px;
+	}
+	.logo {
+		width: 100px;
+		display: block;
+		@include breakpoint(laptop) {
+			width: 213px;
+			float: left;
+		}
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
 	.right {
 		@include breakpoint(laptop) {
 			float: right;
 			text-align: right;
-			margin-top: 15px;
+			margin-top: 18px;
 		}
 	}
 	.tel {
 		font-size: 1.5em;
 		color: #e7480e;
 		font-weight: bold;
-		text-align: right;
+		display: block;
+		text-align: center;
+		@include breakpoint(laptop) {
+			display: inline;
+			text-align: left;
+		}
 	}
 }
 
@@ -74,7 +123,10 @@ body {
 	ul {
 		@include clearfix;
 		li {
-			float: left;
+			text-align: center;
+			@include breakpoint(laptop) {
+				float: left;
+			}
 			a {
 				display: block;
 				padding: 10px;
@@ -95,26 +147,36 @@ body {
 
 .emotion {
 	position: relative;
+	/*
 	max-height: 650px;
 	overflow: hidden;
+	*/
 	background: #000;
 	.text {
-		position: absolute;
 		z-index: 1;
 		bottom: 20%;
 		color: #fff;
+		padding: 10px;
+		@include breakpoint(laptop) {
+			position: absolute;
+		}
 		h2, h3 {
 			background: #000;
 			background: rgba(0,0,0,0.75);
 			display: inline-block;
+			margin: 0;
 		}
 		h2 {
-			font-size: 1.75em;
-			padding: 12px 15px;
+			@include breakpoint(laptop) {
+				font-size: 1.75em;
+				padding: 12px 15px;
+			}
 		}
 		h3 {
-			padding: 10px 15px;
-			font-size: 1.25em;
+			@include breakpoint(laptop) {
+				padding: 10px 15px;
+				font-size: 1.25em;
+			}
 		}
 	}
 	.pic {
@@ -122,6 +184,7 @@ body {
 		z-index: 0;
 		img {
 			width: 100%;
+			display: block;
 		}
 	}
 }
@@ -131,10 +194,161 @@ body {
 	background: #e7480e;
 	color: #fff;
 	text-align: center;
-	padding: 15px 0;
+	padding: 20px 0;
+	@include breakpoint(laptop) {
+		padding: 15px 0;
+	}
+	iframe {
+		width: 100%;
+		max-width: 850px;
+		position: relative;
+		z-index: 100;
+		@include breakpoint(laptop) {
+			margin-bottom: -75px;
+		}
+	}
 	h2 {
-		font-size: 1.5em;
-		margin: 15px 0 25px;
+		@include breakpoint(laptop) {
+			font-size: 1.5em;
+			margin: 15px 0 25px;
+		}
+	}
+}
+
+.animated {
+	@include clearfix;
+	position: relative;
+	padding: 0 20px;
+	margin: 0 auto;
+	@include breakpoint(laptop) {
+		height: 1445px;
+		background: url("../images/animated-bg.png") center top no-repeat;
+		.container {
+			position: relative;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+	}
+	.box {
+		@include breakpoint(laptop) {
+			max-width: 400px;
+			&.border {
+				background: #fff;
+				padding: 20px;
+				box-shadow: 0 0 8px rgba(0,0,0,0.15);
+			}
+			position: absolute;
+			&.top-left {
+				top: 170px;
+				left: 0;
+			}
+			&.top-right {
+				top: 400px;
+				right: 0;
+			}
+			&.bottom-left {
+				top: 900px;
+				left: 0;
+			}
+			&.bottom-right {
+				top: 1080px;
+				right: 0;
+			}
+		}
+		h3 {
+			color: #ff4a00;
+			text-transform: uppercase;
+			margin: 5px 0 10px;
+			@include breakpoint(laptop) {
+				font-size: 1.25em;
+			}
+		}
+		a {
+			color: #ff4a00;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.teaser-bottom {
+	margin-bottom: 50px;
+	.box {
+		border: 8px solid #ff4a00;
+		padding: 20px;
+		font-family: 'Oswald', sans-serif;
+		font-weight: bold;
+		max-width: 900px;
+		margin: 0 auto;
+		text-align: center;
+		color: #333;
+		text-transform: uppercase;
+		h3 {
+			font-size: 2em;
+			line-height: 1.1em;
+			margin: 0;
+		}
+	}
+}
+
+section.orange {
+	background: #ff4a00;
+	color: #fff;
+	padding: 50px 0;
+	text-align: center;
+	font-size: 1.2em;
+}
+
+section.customers {
+	padding: 50px 0;
+	background: #f5f5f5;
+	color: #888;
+	h3 {
+		margin: 18px 0 40px;
+		font-size: 1.35em;
+	}
+	p {
+		margin: 25px 0 0;
+	}
+	.img-container {
+		@include clearfix;
+	}
+	.img-wrapper {
+		background: #fff;
+		height: 150px;
+		width: 50%;
+		display: block;
+		float: left;
+		@include breakpoint(laptop) {
+			height: 200px;
+			width: 24%;
+			margin: 0.25%;
+		}
+		img {
+			display: block;
+			margin: 0 auto;
+			max-width: 100%;
+			height: auto;
+		}
+	}
+}
+
+section.cite {
+	.left {
+		@include breakpoint(laptop) {
+			@include span(7);
+		}
+	}
+	.right {
+		@include breakpoint(laptop) {
+			@include span(5 last);
+		}
+		a.tel {
+			color: #fff;
+			text-decoration: none;
+		}
 	}
 }
 
