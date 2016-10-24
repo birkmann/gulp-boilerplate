@@ -12,23 +12,68 @@ body {
 }
 
 h1 {
-	font-size: 2em;
+	font-size: 1.5em;
 	margin: 5px 0 15px;
+	@include breakpoint(laptop) {
+		font-size: 2em;
+	}
 }
 
 h2 {
-	font-size: 1.75em;
+	font-size: 1.3em;
 	margin: 5px 0 15px;
+	@include breakpoint(laptop) {
+		font-size: 2em;
+	}
 }
 
 h3 {
-	font-size: 1.5em;
+	font-size: 1.1em;
 	margin: 5px 0 15px;
+	@include breakpoint(laptop) {
+		font-size: 2em;
+	}
+}
+
+p {
+	color: #666;
+	line-height: 1.8em;
+	margin: 0 0 15px;
+}
+
+.orange {
+	p {
+		color: #fff;
+		margin: 0;
+	}
+}
+
+button {
+	background: #ff4a00;
+	color: #fff;
+	font-size: 1em;
+	cursor: pointer;
+	border: 0 none;
+	display: block;
+	margin: 0 auto;
+	padding: 5px 20px;
+	border-radius: 2px;
+	&.white {
+		background: #fff;
+		color: #ff4a00;
+		&:hover {
+			background: darken(#fff,10%);
+		}
+	}
+	&:hover {
+		background: darken(#ff4a00,10%);
+	}
 }
 
 .img-r {
 	width: 100%;
 	height: auto;
+	display: block;
 }
 
 img.circle {
@@ -90,9 +135,9 @@ img.circle {
 	.logo {
 		width: 100px;
 		display: block;
+		float: left;
 		@include breakpoint(laptop) {
 			width: 213px;
-			float: left;
 		}
 		img {
 			width: 100%;
@@ -100,8 +145,13 @@ img.circle {
 		}
 	}
 	.right {
+		display: none;
+    	width: 100%;
+    	float: left;
 		@include breakpoint(laptop) {
+			display: block !important;
 			float: right;
+			width: auto;
 			text-align: right;
 			margin-top: 18px;
 		}
@@ -145,37 +195,104 @@ img.circle {
 	}
 }
 
+.nav-toggle {
+	float: right;
+	cursor: pointer;
+	vertical-align: top;
+	display: inline-block;
+	z-index: 999999;
+	padding: 10px;
+	@include breakpoint(tablet) {
+		display: none;
+	}
+	.nav-opener {
+		display: inline-block;
+		vertical-align: top;
+		float: right;
+		width: 40px;
+		height: 35px;
+		position: relative;
+		text-indent: -9999px;
+		overflow: hidden;
+		&:before,
+		&:after,
+		& span {
+			background: #e7480e;
+			border-radius: 0px;
+			position: absolute;
+			top: 19px;
+			left: 3px;
+			right: 3px;
+			height: 4px;
+			margin-top: -5px;
+			transition: all 0.2s linear;
+		}
+		&:before {
+			content: '';
+			top: 8px;
+			left: 30%;
+		}
+		&:after {
+			content: '';
+			top: 30px;
+		}
+		.open & span {
+			opacity: 0;
+		}
+		.open &:after,
+		.open &:before {
+			background: #333;
+			transform: rotate(45deg);
+			top: 20px;
+			left: 5%;
+			right: 5%;
+		}
+		.open &:after {
+			transform: rotate(-45deg);
+		}
+	}
+}
+
 .emotion {
 	position: relative;
 	/*
 	max-height: 650px;
 	overflow: hidden;
 	*/
-	background: #000;
+	background: #e7480e;
 	.text {
 		z-index: 1;
-		bottom: 20%;
 		color: #fff;
-		padding: 10px;
+		padding: 15px 20px;
+		text-align: center;
 		@include breakpoint(laptop) {
+			padding: 0;
+			text-align: left;
 			position: absolute;
+			bottom: 30%;
 		}
 		h2, h3 {
-			background: #000;
-			background: rgba(0,0,0,0.75);
-			display: inline-block;
 			margin: 0;
+			display: inline-block;
+			@include breakpoint(laptop) {
+				background: #000;
+				background: rgba(0,0,0,0.75);
+			}
 		}
 		h2 {
+			font-size: 1.1em;
+			line-height: 1em;
 			@include breakpoint(laptop) {
-				font-size: 1.75em;
+				font-size: 2em;
 				padding: 12px 15px;
 			}
 		}
 		h3 {
+			font-size: 0.9em;
+			line-height: 1em;
 			@include breakpoint(laptop) {
 				padding: 10px 15px;
-				font-size: 1.25em;
+				font-size: 1.5em;
 			}
 		}
 	}
@@ -194,7 +311,6 @@ img.circle {
 	background: #e7480e;
 	color: #fff;
 	text-align: center;
-	padding: 20px 0;
 	@include breakpoint(laptop) {
 		padding: 15px 0;
 	}
@@ -203,14 +319,64 @@ img.circle {
 		max-width: 850px;
 		position: relative;
 		z-index: 100;
+		height: 180px;
+		display: block;
+		margin: 0 auto;
 		@include breakpoint(laptop) {
-			margin-bottom: -75px;
+			margin-bottom: -60px;
+			height: 479px;
 		}
 	}
 	h2 {
+		font-size: 1em;
+		padding: 0 20px;
+		background: darken(#e7480e, 10%);
+		padding: 10px;
+		margin: 0;
 		@include breakpoint(laptop) {
+			background: none;
+			padding: 0;
 			font-size: 1.5em;
 			margin: 15px 0 25px;
+			text-transform: uppercase
+		}
+	}
+}
+
+.intro-subpage {
+	background: #e7480e;
+	color: #fff;
+	padding: 20px 0;
+	overflow: hidden;
+	p {
+		color: #fff;
+	}
+	h2 {
+		font-weight: bold;
+		font-size: 1.6em;
+	}
+	.left {
+		@include breakpoint(laptop) {
+			@include span(6);
+			padding: 50px 0;
+		}
+		p {
+			margin: 10px 0 20px;
+		}
+		a {
+			color: #fff;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	.right {
+		@include breakpoint(laptop) {
+			@include span(6 last);
+			img {
+				margin-bottom: -150px;
+			}
 		}
 	}
 }
@@ -218,7 +384,7 @@ img.circle {
 .animated {
 	@include clearfix;
 	position: relative;
-	padding: 0 20px;
+	padding: 20px;
 	margin: 0 auto;
 	@include breakpoint(laptop) {
 		height: 1445px;
@@ -230,6 +396,7 @@ img.circle {
 		}
 	}
 	.box {
+		margin: 0 0 50px;
 		@include breakpoint(laptop) {
 			max-width: 400px;
 			&.border {
@@ -239,11 +406,11 @@ img.circle {
 			}
 			position: absolute;
 			&.top-left {
-				top: 170px;
+				top: 150px;
 				left: 0;
 			}
 			&.top-right {
-				top: 400px;
+				top: 350px;
 				right: 0;
 			}
 			&.bottom-left {
@@ -277,7 +444,7 @@ img.circle {
 	margin-bottom: 50px;
 	.box {
 		border: 8px solid #ff4a00;
-		padding: 20px;
+		padding: 15px;
 		font-family: 'Oswald', sans-serif;
 		font-weight: bold;
 		max-width: 900px;
@@ -285,10 +452,18 @@ img.circle {
 		text-align: center;
 		color: #333;
 		text-transform: uppercase;
+		margin: 15px;
+		@include breakpoint(laptop) {
+			margin: 0 auto;
+			padding: 20px;
+		}
 		h3 {
-			font-size: 2em;
+			font-size: 1.25em;
 			line-height: 1.1em;
 			margin: 0;
+			@include breakpoint(laptop) {
+				font-size: 2em;
+			}
 		}
 	}
 }
@@ -296,9 +471,12 @@ img.circle {
 section.orange {
 	background: #ff4a00;
 	color: #fff;
-	padding: 50px 0;
+	padding: 20px;
 	text-align: center;
-	font-size: 1.2em;
+	@include breakpoint(laptop) {
+		font-size: 1.2em;
+		padding: 50px;
+	}
 }
 
 section.customers {
@@ -336,18 +514,113 @@ section.customers {
 }
 
 section.cite {
+	padding: 40px 10px 50px;
+	cite {
+		max-width: 850px;
+		display: block;
+		margin: 0 auto 25px;
+		font-size: 1.2em;
+		line-height: 1.4em;
+	}
+	h3 {
+		font-size: 1em;
+		margin: 0;
+		@include breakpoint(laptop) {
+			font-size: 1.5em;
+		}
+	}
+	.wrapper {
+		max-width: 850px;
+	}
 	.left {
 		@include breakpoint(laptop) {
-			@include span(7);
+			@include span(6);
 		}
 	}
 	.right {
 		@include breakpoint(laptop) {
-			@include span(5 last);
+			@include span(6 last);
+			margin-top: 30px;
 		}
 		a.tel {
-			color: #fff;
+			color: #ff4a00;
+			background: #fff;
+			display: inline-block;
+			padding: 10px 20px;
+			border-radius: 3px;
 			text-decoration: none;
+			margin: 10px auto;
+			font-weight: bold;
+			font-size: 1.4em;
+			@include breakpoint(laptop) {
+				font-size: 1.8em;
+			}
+			&:hover {
+				background: darken(#fff,10%);
+			}
+		}
+		p {
+			line-height: 1.2em;
+			margin: 5px 0;
+		}
+		button {
+			margin: 20px auto;
+		}
+	}
+}
+
+section.form {
+	background: url("../images/footer-top.png") no-repeat center bottom #f6f6f6;
+	padding: 25px 20px 50px;
+	.container {
+		h3 {
+			color: #ff4a00;
+			font-weight: bold;
+			margin: 20px 0 40px;
+		}
+		form {
+			max-width: 950px;
+			margin: 0 auto;
+			input[type="text"],
+			input[type="email"],
+			input[type="phone"] {
+				width: 100%;
+				padding: 8px 15px;
+				border: 1px solid #cbcbcb;
+				background: #fff;
+				border-radius: 2px;
+				font-size: 1em;
+				margin: 0 0 35px;
+				@include breakpoint(laptop) {
+					@include span (4);
+				}
+			}
+			input[type="phone"] {
+				@include breakpoint(laptop) {
+					@include span (4 last);
+				}
+			}
+			textarea {
+				width: 100%;
+				padding: 12px 15px;
+				border: 1px solid #cbcbcb;
+				background: #fff;
+				border-radius: 2px;
+				font-size: 0.85em;
+				margin: 0 0 20px;
+				min-height: 180px;
+				font-size: inherit;
+			}
+			button {
+				font-size: 1.2em;
+				width: 100%;
+				max-width: 250px;
+				padding: 10px 20px;
+				font-weight: bold;
+			}
+		}
+		.row {
+
 		}
 	}
 }
